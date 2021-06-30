@@ -1,0 +1,62 @@
+{%extends 'store/base.html'%} {%block content%}
+<script
+  async
+  defer
+  crossorigin="anonymous"
+  src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v11.0"
+  nonce="Ya0BYNvu"
+></script>
+<div class="container my-4">
+  <div class="row">
+    <div class="col-md-8 blog-main">
+      <h3 class="mb-2">{{post.title}}</h3>
+      <div
+        class="fb-like"
+        data-href="http://127.0.0.1:8000/blogpost/{{post.postId}}"
+        data-width=""
+        data-layout="button_count"
+        data-action="like"
+        data-size="small"
+        data-share="true"
+      ></div>
+      <div class="blog-post">
+        <p>{{post.description}}</p>
+        <h2 class="blog-post-title">{{post.headingone}}</h2>
+        <p class="blog-post-meta">January 1, 2014 by <a href="#">GoStore</a></p>
+        <p>{{post.contentone}}</p>
+        <h2>{{post.headingtwo}}</h2>
+        <p>{{post.contenttwo}}</p>
+        <h2>{{post.headingthree}}</h2>
+        <p>{{post.contentthree}}</p>
+        <div
+          class="fb-comments"
+          data-href="http://127.0.0.1:8000/blogpost/{{post.postId}}"
+          data-width=""
+          data-numposts="5"
+        ></div>
+      </div>
+    </div>
+    {%endblock%}
+  </div>
+</div>
+
+{% block js %}
+<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+<script>
+  if (localStorage.getItem("cart") == null) {
+    var cart = {};
+  } else {
+    cart = JSON.parse(localStorage.getItem("cart"));
+  }
+  var sum = 0;
+
+  for (item in cart) {
+    let name = cart[item][1];
+    let qty = cart[item][0];
+    let itemPrice = cart[item][2] * qty;
+    sum = sum + qty;
+  }
+
+  document.getElementById("cart").innerHTML = sum;
+</script>
+{% endblock %}

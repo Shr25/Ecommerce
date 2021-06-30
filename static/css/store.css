@@ -1,0 +1,98 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  font-family: "Lato", sans-serif;
+}
+
+/* ! Carousel */
+.carousel-products {
+  width: 100%;
+  position: relative;
+}
+
+.carousel-products .carousel__item,
+.carousel-products .carousel__item--hidden {
+  display: none;
+}
+
+.carousel-products .carousel__item img {
+  width: 100%;
+  max-width: 600px;
+  height: auto;
+}
+
+.carousel-products .carousel__item--visible {
+  display: block;
+  animation: fadeVisibility 0.5s;
+}
+
+.carousel-products .carousel__actions {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.carousel-products .carousel__actions button {
+  border: 0;
+  font-weight: bold;
+  cursor: pointer;
+  width: 40px;
+  height: 100px;
+  background-color: #293B5F;
+  color: #fff;
+}
+
+.carousel-products .carousel__actions button#carousel__button--prev {
+  margin-left: 20px;
+}
+
+.carousel-products .carousel__actions button#carousel__button--next {
+  margin-right: 20px;
+}
+
+#carousel__button--prev{
+  position: relative;
+  left: -4vw;
+}
+
+#carousel__button--next{
+  position: relative;
+  left: 4vw;
+}
+
+
+@keyframes fadeVisibility {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+    transform: opacity linear;
+  }
+}
+
+/* ! Buttons */
+.bg, .nav-bg-color{
+  background-color: #293B5F;
+}
+
+.bg:hover{
+  background-color: #47597E;
+}
+
+.bg-secondary-color{
+  border: 1px solid #293B5F;
+}
+
+.bg-secondary-color:hover{
+  background-color: #47597E;
+  color: #fff;
+}

@@ -1,0 +1,6 @@
+.vscode/
+info.txt
+GoStore/__pycache__/
+store/__pycache__/
+blog/__pycache__/
+*.py[cod]

@@ -1,0 +1,71 @@
+{% extends 'store/base.html' %} {% block content %} {% load static %}
+<div class="container">
+  {% for product, range, noOfSlides in productAll %}
+  <h1>{{product.0.category}}</h1>
+  <div class="carousel-products" id="product-slider">
+    <div class="carousel__item carousel__item--visible" style="margin-left: 4.3vw;">
+      {% for i in product %}
+      <div class="products" style="display: inline-block;">
+        <div class="card align-items-center" style= "width:18rem";>
+          <img
+            src="/images/{{i.image}}"
+            class="card-img-top"
+            alt="..."
+            style="max-width: 200px; height: 230px;"
+          />
+          <div class="card-body"> 
+            <h5 class="card-title" id="namepr{{i.id}}">{{i.productName}}</h5>
+            <p class="card-text">{{i.description|slice:"0:50"}}...<a href="/productInfo/{{i.id}}" class="link">Read more</a></p>
+            <h6 class="card-price">₹<span id="pricepr{{i.id}}">{{i.price}}</span></h6>
+            <span id="divpr{{i.id}}" class="divpr">
+              <button id="pr{{i.id}}" class="btn btn-primary cart">Add To Cart</button>
+            </span>
+            <a href="/productInfo/{{i.id}}"><button id="view{{i.id}}" class="btn btn-ouline-dark">View Info</button></a> 
+          </div>
+        </div>
+      </div>
+      {% if forloop.counter|divisibleby:4 and forloop.counter > 0 and not forloop.last %}
+    </div>
+    <div class="carousel__item" style="margin-left: 4.3vw;">
+      {% endif %}
+      {% endfor %}
+
+    </div>
+    <div class="carousel__actions">
+      <button id="carousel__button--prev" aria-label="Previous slide"><</button>
+      <button id="carousel__button--next" aria-label="Next slide">></button>
+    </div>
+  </div>
+  
+  {% endfor %}
+</div>
+  <div class="buttons m-5 ">
+    <button class="btn btn-primary" style="margin-left: 1.3vw;" onclick="clearCart()" id="clearCart">Clear</button>
+  </div> 
+{% endblock %}
+
+
+{% block js %}
+<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+<script>
+  if (localStorage.getItem("cart") == null) {
+    var cart = {};
+  } else {
+    cart = JSON.parse(localStorage.getItem("cart"));
+  }
+  var sum = 0;
+
+  for (item in cart) {
+    let name = cart[item][1];
+    let qty = cart[item][0];
+    let itemPrice = cart[item][2] * qty;
+    sum = sum + qty;
+  }
+
+  document.getElementById("cart").innerHTML = sum;
+    {% if msg|length != 0 %}
+  alert('{{msg}}');
+  window.location.href = "/store/"
+  {% endif %}
+</script>
+{% endblock %}  
