@@ -9,7 +9,7 @@
 <div class="container my-4">
   <div class="row">
     <div class="col-md-8 blog-main">
-      <h3 class="mb-2">{{post.title}}</h3>
+      <h2 class="mb-2 post-title" style="font-weight: 800;">{{post.title}}</h2>
       <div
         class="fb-like"
         data-href="http://127.0.0.1:8000/blogpost/{{post.postId}}"
@@ -21,12 +21,12 @@
       ></div>
       <div class="blog-post">
         <p>{{post.description}}</p>
-        <h2 class="blog-post-title">{{post.headingone}}</h2>
-        <p class="blog-post-meta">January 1, 2014 by <a href="#">GoStore</a></p>
+        <h4 class="blog-post-title">#{{post.headingone}}</h4>
+        <p class="blog-post-meta">{{post.publishDate}}<a href="{% url 'Products' %}">GoStore</a></p>
         <p>{{post.contentone}}</p>
-        <h2>{{post.headingtwo}}</h2>
+        <h4>#{{post.headingtwo}}</h4>
         <p>{{post.contenttwo}}</p>
-        <h2>{{post.headingthree}}</h2>
+        <h4>#{{post.headingthree}}</h4>
         <p>{{post.contentthree}}</p>
         <div
           class="fb-comments"
