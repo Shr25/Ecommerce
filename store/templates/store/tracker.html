@@ -1,9 +1,7 @@
 {% extends 'store/base.html' %} {% block content %}
 <div class="container">
-  <h2 class="mt-3">Checkout</h2>
-  <div class="border-bottom"></div>
   <div class="col my-4 mt-3">
-    <h3 class="mt-3">Track Your Order</h3>
+    <h1 class="mt-3">Track Your Order</h1>
     <div class="border-bottom"></div>
     <form class="row g-3 mt-1" action="#" id="trackerForm" method="POST">
       {% csrf_token %}
@@ -28,7 +26,7 @@
         />
       </div>
       <div class="col-12">
-        <button type="submit" class="btn btn-success">Track Order</button>
+        <button type="submit" class="btn btn-success" style="border-radius: 0;">Track Order</button>
       </div>
     </form>
     <h3 class="mt-3">Your Order Status</h3>
