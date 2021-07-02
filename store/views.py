@@ -15,11 +15,6 @@ def home(request):
 
 
 def store(request):
-  # products = Product.objects.all()
-  # n = len(products)
-  # noOfSlides = n // 4 + ceil((n / 4) + (n // 4))
-
-  # context = {'product':products, 'noOfSlides':noOfSlides, 'range':range(1, noOfSlides)}
   productAll = []
   productCategory = Product.objects.values('category', 'id')
   categories = {item['category'] for item in productCategory}
