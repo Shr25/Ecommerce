@@ -25,7 +25,7 @@ function clearCart() {
     document.getElementById("div" + item).innerHTML =
       '<button id="' +
       item +
-      '" class="btn bg text-white cart"> Add To Cart</button>';
+      '" class="btn cart-btn-1 text-white cart"> Add To Cart</button>';
   }
   localStorage.clear();
   cart = {};
@@ -38,13 +38,13 @@ function updateCart(cart) {
     sum = sum + cart[item][0];
     document.getElementById("div" + item).innerHTML ="<button id='minus" +
     item +
-    "' class='btn bg text-white minus'>-</button> <span id='val" +
+    "' class='btn cart-btn-1 text-white minus'>-</button> <span id='val" +
     item +
     "''>" +
     cart[item][0] +
     "</span> <button id='plus" +
     item +
-    "' class='btn bg text-white plus'> + </button>";
+    "' class='btn cart-btn-1 text-white plus'> + </button>";
       
   }
   localStorage.setItem("cart", JSON.stringify(cart));
@@ -57,7 +57,7 @@ $(".divpr").on("click", "button.minus", function () {
   a = this.id.slice(7, );
   cart["pr" + a][0] = cart["pr" + a][0] - 1;
   cart["pr" + a][0] = Math.max(0, cart["pr" + a][0]);
-  document.getElementById("divpr" + a).innerHTML = '<button id="pr{{i.id}}" class="btn bg text-white cart">Add To Cart</button>';
+  document.getElementById("divpr" + a).innerHTML = '<button id="pr{{i.id}}" class="btn cart-btn-1 text-white cart">Add To Cart</button>';
   updateCart(cart);
 });
 $(".divpr").on("click", "button.plus", function () {
@@ -66,12 +66,3 @@ $(".divpr").on("click", "button.plus", function () {
   document.getElementById("valpr" + a).innerHTML = cart["pr" + a][0];
   updateCart(cart);
 });
-
-
-// if(cart['pr' + a][0] == 0){
-//   document.getElementById("divpr" + a).innerHTML = '<button id="pr{{i.id}}" class="btn bg text-white cart">Add To Cart</button>';
-//   delete cart["pr" + a];
-// }
-// else{
-// document.getElementById("valpr" + a).innerHTML = cart["pr" + a][0]; 
-// }
