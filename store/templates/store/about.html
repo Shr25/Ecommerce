@@ -1,50 +1,43 @@
-{% extends 'store/base.html' %} {% block content %}
-
-<style>
-  .bd-placeholder-img {
-    font-size: 1.125rem;
-    text-anchor: middle;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    user-select: none;
-  }
-
-  @media (min-width: 768px) {
-    .bd-placeholder-img-lg {
-      font-size: 3.5rem;
-    }
-  }
-</style>
-
-<main>
-  <div class="container py-4">
-    <h2>About</h2>
-    <div class="border-bottom"></div>
-    <div class="p-5 my-5 bg-light rounded-3">
-      <p class="col-md-8 fs-4">
-        GoStore🚀An E-commerce website includes various gadgets.
-      </p>
-      <p class="col-md-8 fs-4">
-        The Website has features like add to cart🛒, checkout ✨,order
-        tracking 💥,clear cart❌, contact form 📝,place orders.
-      </p>
-      <p class="col-md-8 fs-4">
-        Payment💸 integration is also implemented on this website
-      </p>
-
-      <a href="{% url 'Products' %}"
-        ><button class="btn btn-outline-dark btn-lg" type="button">
-          Go To Store
-        </button></a
-      >
+{% extends 'store/base.html' %} {% load static %} {% block content %}
+<main class="about">
+  <div class="container my-3">
+    <div class="row justify-content-center align-items-center mb-5">
+      <div class="about-info col-12 ">
+        <div class="about-content">
+          <div class="row justify-content-center align-items-center">
+            <div class="col-6">
+              <!-- <img src="{% static 'images/cart.svg' %}" style="width: 35vw; height: 200px;" alt=""> -->
+              <img src="/static/images/Catalogue.gif" style="width: 35vw; height: 400px;" alt="">
+            </div>
+            <div class="col-6">
+              <div class="about-header mb-5 text-center">
+                <h2>About GoStore</h2>
+              </div>
+              <p class="mx-5 lead">
+                GoStore is an eCommerece website and it has features like add to cart, order tracking, search products by typing product name, product checkout, contact form, blogs.
+              </p>
+            </div>
+          </div>
+          </div>
+        </div>
     </div>
-    <footer class="pt-3 mt-5 lead text-center border-top">
-      &copy; 2021 GoStore | Made With 🧡 For The People Of Internet
-    </footer>
+    <div class="footer">
+      <hr>
+      <div class="col-12">
+        
+        <p class="lead text-center">
+          <strong
+          >Copyright &copy; 2021 GoStore | Made with 🧡 for the people of the
+          internet</strong
+          >
+        </p>
+      </div>
+    </div>
   </div>
 </main>
 
 {% endblock content %}
+
 
 {% block js %}
 <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
@@ -62,7 +55,6 @@
     let itemPrice = cart[item][2] * qty;
     sum = sum + qty;
   }
-
   document.getElementById("cart").innerHTML = sum;
 </script>
 {% endblock %}
