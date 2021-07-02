@@ -1,39 +1,41 @@
 {% extends 'store/base.html' %}
-{% block content %}
+{% block css %}
+<style>
+  body{
+  background-color: var(--primary-color);
+  }
+</style>
+{% endblock %}
 
-<main>
-  <div class="container">
-    <header class="pb-3 mb-4 border-bottom">
-      <h2 class="mt-3">Contact</h2>
-    </header>
-    <div class="p-5 mb-4 bg-light rounded-3">
-      <div class="container">
-        <form action="/contact/" method="POST">
-          {% csrf_token %}
-          
-            <div class="mb-3">
-              <label for="name" class="form-label">Name</label>
-              <input type="text" class="form-control" id="name" name="name" placeholder="Enter Your Name">
-            </div>
-            <div class="mb-3">
-              <label for="email" class="form-label">Email address</label>
-              <input type="email" class="form-control" id="email" name="email" placeholder="Enter Your Email address">
-            </div>
-            <div class="mb-3">
-              <label for="phone" class="form-label">Phone Number</label>
-              <input type="tel" class="form-control" id="phone" name="phone" placeholder="Enter Your Phone Number">
-            </div>
-            <div class="mb-3">
-              <label for="description" class="form-label">Message</label>
-              <textarea class="form-control" id="description" name="description" rows="5"></textarea>
-            </div>
-            <button class="btn btn-success" type="submit">Submit</button>
-        </form>
-      </div>
-    </div>
+
+{% block content %}
+<main class="contact-form">
+  <div class="container my-5">
+    <h2>Get In Touch</h2>
+    <form action="/contact/" method="POST">
+      {% csrf_token %}
+        <div class="my-3">
+          <label for="name" class="form-label text-light">Name</label>
+          <input type="text" class="form-control contact-input  rounded-0" id="name" name="name" placeholder="Enter Your Name">
+        </div>
+        <div class="row">
+          <div class="col-6 mb-3">
+            <label for="email" class="form-label text-light">Email address</label>
+            <input type="email" class="form-control contact-input  rounded-0" id="email" name="email" placeholder="Enter Your Email address">
+          </div>
+          <div class="col-6 mb-3">
+            <label for="phone" class="form-label text-light">Phone Number</label>
+            <input type="tel" class="form-control contact-input rounded-0" id="phone" name="phone" placeholder="Enter Your Phone Number">
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="description" class="form-label text-light">Message</label>
+          <textarea class="form-control contact-input rounded-0" id="description" name="description" rows="5"></textarea>
+        </div>
+        <button class="btn btn-contact rounded-0" type="submit">Submit</button>
+    </form>
   </div>
 </main>
-
 {% endblock content %}
 
 
